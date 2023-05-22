@@ -22,6 +22,9 @@ public class CharacterController : MonoBehaviour
     public Vector3 v3;
     public LayerMask layer;
     public float distance;
+    GameObject tryAgainButton;
+
+    bool playerAlive = true;
 
     private void Start()
     {
@@ -30,6 +33,8 @@ public class CharacterController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        tryAgainButton = GameObject.Find("TryAgainButton");
+        tryAgainButton.SetActive(false);
     }
 
     private void OnDrawGizmos()
@@ -40,9 +45,14 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Detector_Plataforma();
-        ProcesarMovimiento();
-        ProcesarSalto();
+        if (playerAlive)
+        {
+            Detector_Plataforma();
+            ProcesarMovimiento();
+            ProcesarSalto();
+            Die();
+        }
+        
     }
 
     public void Detector_Plataforma()
@@ -116,6 +126,16 @@ public class CharacterController : MonoBehaviour
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
 
+    }
+
+    private void Die()
+    {
+        if (actualHealth <=0)
+        {
+            animator.SetTrigger("dead");
+            playerAlive = false;
+            tryAgainButton.SetActive(true);
+        }
     }
 
     private void TakeDamage(int damage)
