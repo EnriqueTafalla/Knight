@@ -6,7 +6,9 @@ public class CharacterController : MonoBehaviour
 {
     public float velocidad;
     public float fuerzaSalto;
+    public float fuerzaGolpe;
     public LayerMask capaSuelo;
+    private bool puedeMoverse = true;
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
@@ -25,6 +27,8 @@ public class CharacterController : MonoBehaviour
     GameObject tryAgainButton;
 
     bool playerAlive = true;
+
+    
 
     private void Start()
     {
@@ -89,6 +93,7 @@ public class CharacterController : MonoBehaviour
     }
     void ProcesarMovimiento()
     {
+        if (!puedeMoverse) return;
         //Logica de Movimiento
         float inputMovimiento = Input.GetAxis("Horizontal");
 
@@ -127,7 +132,39 @@ public class CharacterController : MonoBehaviour
         }
 
     }
+    public void AplicarGolpe()
+    {
+        puedeMoverse = false;
 
+        Vector2 direccionGolpe;
+
+        if(rigidBody.velocity.x > 0)
+        {
+            direccionGolpe = new Vector2(-1, 1);
+        }
+        else
+        {
+            direccionGolpe = new Vector2(1, 1);
+        }
+
+        rigidBody.AddForce(direccionGolpe * fuerzaGolpe);
+
+        StartCoroutine(EsperarYActivarMovimiento());
+    }
+    IEnumerator EsperarYActivarMovimiento()
+    {
+        // Esperamos antes de comprobar si esta en el suelo.
+        yield return new WaitForSeconds(0.1f);
+
+        while (!EstaEnSuelo())
+        {
+            // Esperamos al siguiente frame.
+            yield return null;
+        }
+
+        // Si ya está en suelo activamos el movimiento.
+        puedeMoverse = true;
+    }
     private void Die()
     {
         if (actualHealth <=0)

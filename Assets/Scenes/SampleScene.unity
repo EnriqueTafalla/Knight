@@ -4014,6 +4014,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 179620632}
     m_Modifications:
+    - target: {fileID: 2946186890461988153, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: cooldownAtaque
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4299506374296056568, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.78
@@ -4696,6 +4700,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 179620632}
     m_Modifications:
+    - target: {fileID: 2946186890461988153, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: cooldownAtaque
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4299506374296056568, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.23
@@ -12444,6 +12452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 8
   fuerzaSalto: 21
+  fuerzaGolpe: 1000
   capaSuelo:
     serializedVersion: 2
     m_Bits: 256
@@ -13195,6 +13204,10 @@ PrefabInstance:
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2946186890461988153, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: cooldownAtaque
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4299506374296056568, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.48
@@ -13268,6 +13281,10 @@ PrefabInstance:
     - target: {fileID: 2946186890461988153, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
       propertyPath: speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946186890461988153, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: cooldownAtaque
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4299506374296056568, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13617,6 +13634,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 179620632}
     m_Modifications:
+    - target: {fileID: 2946186890461988153, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: cooldownAtaque
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946186890461988157, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946186890461988157, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946186890461988157, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299506374296056568, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.33
+      objectReference: {fileID: 0}
     - target: {fileID: 4299506376020428666, guid: 6f1f9a25b0997b7498843435bdb752be, type: 3}
       propertyPath: m_Name
       value: Fantasma
