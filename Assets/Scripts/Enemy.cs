@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
     private Transform currentPoint;
     public float speed;
 
-    private bool puedeAtacar = true;
-    public float cooldownAtaque;
+    
+    
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -46,35 +46,7 @@ public class Enemy : MonoBehaviour
             currentPoint = pointB.transform;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Si no puede atacar salimos de la función.
-            if (!puedeAtacar) return;
-
-            // Desactivamos el ataque.
-            puedeAtacar = false;
-            collision.gameObject.GetComponent<CharacterController>().AplicarGolpe();
-
-            // Cambiamos la opacidad del sprite.
-            Color color = spriteRenderer.color;
-            color.a = 0.5f;
-            spriteRenderer.color = color;
-
-            Invoke("ReactivarAtaque", cooldownAtaque);
-        }
-    }
-
-    void ReactivarAtaque()
-    {
-        puedeAtacar = true;
-
-        // Cambiamos la opacidad del sprite.
-        Color c = spriteRenderer.color;
-        c.a = 1f;
-        spriteRenderer.color = c;
-    }
+   
     private void flip()
     {
         Vector3 localScale = transform.localScale;

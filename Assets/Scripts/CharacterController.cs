@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
     public float velocidad;
     public float fuerzaSalto;
-    public float fuerzaGolpe;
+   
     public LayerMask capaSuelo;
-    private bool puedeMoverse = true;
+    
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private bool mirandoDerecha = true;
-    private Animator animator;
+    public Animator animator;
 
     public BarraDeVida barraDeVida;
-    public int initialHealth;
-    public int actualHealth;
-    public int enemyDamage;
+   
 
     RaycastHit2D hit;
     public Vector3 v3;
@@ -26,14 +25,19 @@ public class CharacterController : MonoBehaviour
     public float distance;
     GameObject tryAgainButton;
 
-    bool playerAlive = true;
+    public bool damage_;
+    public int empuje;
+    public float HP_Min;
+    public float HP_Max;
+    public Image barra;
+    public int dead;
 
-    
+
+
 
     private void Start()
     {
-        actualHealth = initialHealth;
-        barraDeVida.SetMaxHealth(initialHealth);
+        
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
@@ -49,16 +53,49 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerAlive)
+        Vida();
+        if (HP_Min > 0)
         {
-            Detector_Plataforma();
-            ProcesarMovimiento();
-            ProcesarSalto();
-            Die();
+            Damage();
+            if(!damage_)
+            { 
+       
+               Detector_Plataforma();
+               ProcesarMovimiento();
+               ProcesarSalto();
+            }
         }
-        
+        else
+        {
+            switch (dead)
+            {
+                case 0:
+                    animator.SetTrigger("dead");
+                    tryAgainButton.SetActive(true);
+                    dead++;
+                    break;
+            }
+        }
+
+    }
+   
+    public void Damage()
+    {
+        if(damage_)
+        {
+            transform.Translate(Vector3.right * empuje * Time.deltaTime, Space.World);
+        }
     }
 
+    public void Finish_Damage()
+    {
+        damage_ = false;
+    }
+
+    public void Vida()
+    {
+        barra.fillAmount = HP_Min / HP_Max;
+    }
     public void Detector_Plataforma()
     {
         if (CheckCollision)
@@ -93,7 +130,7 @@ public class CharacterController : MonoBehaviour
     }
     void ProcesarMovimiento()
     {
-        if (!puedeMoverse) return;
+        
         //Logica de Movimiento
         float inputMovimiento = Input.GetAxis("Horizontal");
 
@@ -111,15 +148,7 @@ public class CharacterController : MonoBehaviour
         GestionarOrientacion(inputMovimiento);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        int enemyLayer = LayerMask.NameToLayer("enemy");
-
-        if(collision.gameObject.layer == enemyLayer)
-        {
-            TakeDamage(enemyDamage);
-        }
-    }
+    
 
     void GestionarOrientacion(float inputmovimiento)
     {
@@ -132,52 +161,5 @@ public class CharacterController : MonoBehaviour
         }
 
     }
-    public void AplicarGolpe()
-    {
-        puedeMoverse = false;
-
-        Vector2 direccionGolpe;
-
-        if(rigidBody.velocity.x > 0)
-        {
-            direccionGolpe = new Vector2(-1, 1);
-        }
-        else
-        {
-            direccionGolpe = new Vector2(1, 1);
-        }
-
-        rigidBody.AddForce(direccionGolpe * fuerzaGolpe);
-
-        StartCoroutine(EsperarYActivarMovimiento());
-    }
-    IEnumerator EsperarYActivarMovimiento()
-    {
-        // Esperamos antes de comprobar si esta en el suelo.
-        yield return new WaitForSeconds(0.1f);
-
-        while (!EstaEnSuelo())
-        {
-            // Esperamos al siguiente frame.
-            yield return null;
-        }
-
-        // Si ya está en suelo activamos el movimiento.
-        puedeMoverse = true;
-    }
-    private void Die()
-    {
-        if (actualHealth <=0)
-        {
-            animator.SetTrigger("dead");
-            playerAlive = false;
-            tryAgainButton.SetActive(true);
-        }
-    }
-
-    private void TakeDamage(int damage)
-    {
-        actualHealth -= damage;
-        barraDeVida.SetHealth(actualHealth);
-    }
+    
 }
