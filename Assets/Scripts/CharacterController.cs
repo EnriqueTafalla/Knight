@@ -8,7 +8,7 @@ public class CharacterController : MonoBehaviour
     public float fuerzaSalto;
     public float fuerzaGolpe;
     public LayerMask capaSuelo;
-    
+    private bool puedeMoverse = true;
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
@@ -19,13 +19,12 @@ public class CharacterController : MonoBehaviour
     public int initialHealth;
     public int actualHealth;
     public int enemyDamage;
-    GameObject tryAgainButton;
 
     RaycastHit2D hit;
     public Vector3 v3;
     public LayerMask layer;
     public float distance;
-    
+    GameObject tryAgainButton;
 
     bool playerAlive = true;
 
@@ -94,7 +93,7 @@ public class CharacterController : MonoBehaviour
     }
     void ProcesarMovimiento()
     {
-        
+        if (!puedeMoverse) return;
         //Logica de Movimiento
         float inputMovimiento = Input.GetAxis("Horizontal");
 
@@ -135,7 +134,7 @@ public class CharacterController : MonoBehaviour
     }
     public void AplicarGolpe()
     {
-        
+        puedeMoverse = false;
 
         Vector2 direccionGolpe;
 
@@ -164,7 +163,7 @@ public class CharacterController : MonoBehaviour
         }
 
         // Si ya está en suelo activamos el movimiento.
-        
+        puedeMoverse = true;
     }
     private void Die()
     {
