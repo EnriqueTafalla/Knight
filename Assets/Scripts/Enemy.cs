@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D enemyRigidbody;
     private Transform currentPoint;
     public float speed;
-
+    [SerializeField] private float vida;
+    private Animator animator;
     
     
     private SpriteRenderer spriteRenderer;
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyRigidbody = GetComponent<Rigidbody2D>();
         currentPoint = pointB.transform;
@@ -46,6 +48,22 @@ public class Enemy : MonoBehaviour
             currentPoint = pointB.transform;
         }
     }
+
+    public void TomarDaño(float daño)
+    {
+        vida -= daño;
+        if (vida <= 0)
+        {
+            Muerte();
+        }
+    }
+    private void Muerte()
+    {
+        animator.SetTrigger("Muerte");
+        Destroy(this.gameObject);
+    }
+
+
    
     private void flip()
     {
