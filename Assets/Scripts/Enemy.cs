@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float vida;
     private Animator animator;
     
-    
+
+
+
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -55,16 +57,26 @@ public class Enemy : MonoBehaviour
         if (vida <= 0)
         {
             Muerte();
+
         }
     }
-    private void Muerte()
+    private IEnumerator MuerteCoroutine()
     {
+        // Reproducir la animación de muerte
         animator.SetTrigger("Muerte");
-        Destroy(this.gameObject);
+
+        // Esperar a que la animación de muerte termine (puedes ajustar el tiempo según la duración de tu animación)
+        yield return new WaitForSeconds(0.28f);
+
+        // Destruir el objeto del enemigo
+        Destroy(gameObject);
     }
 
+    private void Muerte()
+    {
+        StartCoroutine(MuerteCoroutine());
+    }
 
-   
     private void flip()
     {
         Vector3 localScale = transform.localScale;
