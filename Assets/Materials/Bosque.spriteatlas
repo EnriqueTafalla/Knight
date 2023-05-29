@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GroundSprite
+  m_Name: Bosque
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -2500,5 +2500,5 @@ SpriteAtlas:
   - castle_env
   - wood_env
   m_RenderDataMap: {}
-  m_Tag: GroundSprite
+  m_Tag: Bosque
   m_IsVariant: 0
