@@ -152,10 +152,10 @@ public class CharacterController : MonoBehaviour
 
     void GestionarOrientacion(float inputmovimiento)
     {
-        //Si se cumple condicióm
+        
         if ((mirandoDerecha == true && inputmovimiento < 0) || (mirandoDerecha == false && inputmovimiento > 0))
         {
-            //Ejecutar codigo de volteado 
+            
             mirandoDerecha = !mirandoDerecha;
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }

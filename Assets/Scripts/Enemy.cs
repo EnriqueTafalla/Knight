@@ -62,16 +62,14 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator MuerteCoroutine()
     {
-        // Reproducir la animación de muerte
+        
         animator.SetTrigger("Muerte");
 
         // Esperar a que la animación de muerte termine (puedes ajustar el tiempo según la duración de tu animación)
         yield return new WaitForSeconds(0.28f);
 
-        // Sumar 1 punto al GameManager
+       
         gameManager.SumarPuntos(valor);
-
-        // Destruir el objeto del enemigo
         Destroy(gameObject);
     }
 
