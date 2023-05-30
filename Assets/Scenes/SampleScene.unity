@@ -77076,11 +77076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2610555534229641032, guid: d27528c38ce10794ebb54cca2d723a50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4
+      value: 226.1
       objectReference: {fileID: 0}
     - target: {fileID: 2610555534229641032, guid: d27528c38ce10794ebb54cca2d723a50, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 8.7
       objectReference: {fileID: 0}
     - target: {fileID: 2610555534229641032, guid: d27528c38ce10794ebb54cca2d723a50, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77118,6 +77118,10 @@ PrefabInstance:
       propertyPath: barra
       value: 
       objectReference: {fileID: 64643882}
+    - target: {fileID: 2610555534229641038, guid: d27528c38ce10794ebb54cca2d723a50, type: 3}
+      propertyPath: empuje
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2610555534229641038, guid: d27528c38ce10794ebb54cca2d723a50, type: 3}
       propertyPath: barraDeVida
       value: 

@@ -10,7 +10,8 @@ public class CombateJugador : MonoBehaviour
     [SerializeField] private float maximoVida;
 
     [SerializeField] private LifeBar lifeBar;
-    
+    public Animator animator;
+
 
 
 
@@ -20,6 +21,9 @@ public class CombateJugador : MonoBehaviour
     {
         vida = maximoVida;
         lifeBar.InicializarBarraDeVida(vida);
+        animator = GetComponent<Animator>();
+
+
     }
 
     public void TomarDaño(float daño)
@@ -28,7 +32,9 @@ public class CombateJugador : MonoBehaviour
         lifeBar.CambiarVidaActual(vida);
         if(vida <=0)
         {
+            animator.SetTrigger("dead");
             Destroy(gameObject);
+            
         }
     }
     // Update is called once per frame
