@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
+    [SerializeField] private BoxCollider2D colliderMuerte;
     private bool mirandoDerecha = true;
     public Animator animator;
 
@@ -70,21 +71,25 @@ public class CharacterController : MonoBehaviour
             switch (dead)
             {
                 case 0:
-                    animator.SetTrigger("dead");
-                    tryAgainButton.SetActive(true);
-                    dead++;
+                    Death();
                     break;
             }
         }
 
     }
-   
     public void Damage()
     {
         if(damage_)
         {
             transform.Translate(Vector3.right * empuje * Time.deltaTime, Space.World);
         }
+    }
+
+    public void Death()
+    {
+        animator.SetTrigger("dead");
+        tryAgainButton.SetActive(true);
+        dead++;
     }
 
     public void Finish_Damage()
