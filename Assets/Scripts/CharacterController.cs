@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
     public Vector3 v3;
     public LayerMask layer;
     public float distance;
-    GameObject tryAgainButton;
+   
 
     public bool damage_;
     public int empuje;
@@ -42,8 +42,7 @@ public class CharacterController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        tryAgainButton = GameObject.Find("TryAgainButton");
-        tryAgainButton.SetActive(false);
+        
     }
 
     private void OnDrawGizmos()
@@ -88,7 +87,7 @@ public class CharacterController : MonoBehaviour
     public void Death()
     {
         animator.SetTrigger("dead");
-        tryAgainButton.SetActive(true);
+        
         dead++;
     }
 
