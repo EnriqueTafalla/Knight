@@ -18,12 +18,12 @@ public class HitEnemigo2D : MonoBehaviour
 
                 if (transform.position.x > collision.transform.position.x)
                 {
-                    collision.GetComponent<CharacterController>().empuje = -30;
+                    collision.GetComponent<CharacterController>().empuje = -8;
                     collision.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
                 else
                 {
-                    collision.GetComponent<CharacterController>().empuje = 30;
+                    collision.GetComponent<CharacterController>().empuje = 8;
                     collision.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
                 collision.GetComponent<CharacterController>().HP_Min -= 10;

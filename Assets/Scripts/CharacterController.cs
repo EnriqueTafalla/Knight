@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CharacterController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private BoxCollider2D colliderMuerte;
     private bool mirandoDerecha = true;
     public Animator animator;
+
 
     public BarraDeVida barraDeVida;
    
@@ -33,6 +35,9 @@ public class CharacterController : MonoBehaviour
     public Image barra;
     public int dead;
 
+    GameObject menuGameOverBosque;
+    
+
 
 
 
@@ -42,7 +47,8 @@ public class CharacterController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        
+        menuGameOverBosque = GameObject.Find("menuGameOverBosque");
+        menuGameOverBosque.SetActive(false);
     }
 
     private void OnDrawGizmos()
@@ -71,6 +77,7 @@ public class CharacterController : MonoBehaviour
             {
                 case 0:
                     Death();
+                  
                     break;
             }
         }
@@ -87,7 +94,7 @@ public class CharacterController : MonoBehaviour
     public void Death()
     {
         animator.SetTrigger("dead");
-        
+        menuGameOverBosque.SetActive(true);
         dead++;
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CombateJugador : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class CombateJugador : MonoBehaviour
 
     [SerializeField] private LifeBar lifeBar;
     public Animator animator;
+
+    public event EventHandler MuerteJugador;
 
 
 
@@ -33,6 +36,7 @@ public class CombateJugador : MonoBehaviour
         if(vida <=0)
         {
             animator.SetTrigger("dead");
+            MuerteJugador?.Invoke(this, EventArgs.Empty);
             Destroy(gameObject);
             
         }
