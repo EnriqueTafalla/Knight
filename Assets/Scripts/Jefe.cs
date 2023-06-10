@@ -22,7 +22,9 @@ public class Jefe : MonoBehaviour
 
     [SerializeField] private float dañoAtaque;
 
-    
+    GameObject menuYouWin;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,9 @@ public class Jefe : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         barraDeVidaEnemiga.InicializarBarraDeVida(vida);
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-       
+        menuYouWin = GameObject.Find("menuYouWin");
+        menuYouWin.SetActive(false);
+
     }
 
     private void Update()
@@ -47,11 +51,14 @@ public class Jefe : MonoBehaviour
         if(vida <=0)
         {
             animator.SetTrigger("Muerte");
+           
         }
     }
     private void Muerte()
     {
+        menuYouWin.SetActive(true);
         Destroy(gameObject);
+        
     }
 
     public void MirarJugador()
@@ -61,8 +68,15 @@ public class Jefe : MonoBehaviour
             mirandoDerecha = !mirandoDerecha;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
         }
+        else
+        {
+            mirandoDerecha = !mirandoDerecha;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 0, 0);
+        }
     }
+
     
+
     public void Ataque()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorAtaque.position, radioAtaque);

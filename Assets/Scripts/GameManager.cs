@@ -6,21 +6,23 @@ public class GameManager : MonoBehaviour
 {
     public int PuntosTotales { get { return puntosTotales; } }
     private int puntosTotales;
-    GameObject youwinbutton;
+    GameObject menuYouWin;
+
 
 
     private void Start()
     {
-        youwinbutton = GameObject.Find("YouWinButton");
-        youwinbutton.SetActive(false);
+        menuYouWin = GameObject.Find("menuYouWin");
+        menuYouWin.SetActive(false);
     }
     public void SumarPuntos(int puntosASumar)
     {
         puntosTotales += puntosASumar;
         Debug.Log(puntosTotales);
-        if(puntosTotales >= 200)
+        if(puntosTotales >= 50)
         {
-            youwinbutton.SetActive(true);
+            Time.timeScale = 0f;
+            menuYouWin.SetActive(true);
         }
     }
 }
