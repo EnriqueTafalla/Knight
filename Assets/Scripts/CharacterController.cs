@@ -36,6 +36,8 @@ public class CharacterController : MonoBehaviour
     public int dead;
 
     GameObject menuGameOverBosque;
+
+    public Joystick joystick;
     
 
 
@@ -69,6 +71,8 @@ public class CharacterController : MonoBehaviour
                Detector_Plataforma();
                ProcesarMovimiento();
                ProcesarSalto();
+               
+                
             }
         }
         else
@@ -134,16 +138,17 @@ public class CharacterController : MonoBehaviour
     }
     void ProcesarSalto()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && EstaEnSuelo())
+        if (joystick.Vertical > 0.5f && EstaEnSuelo())
         {
             rigidBody.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
         }
     }
+
     void ProcesarMovimiento()
     {
         
         //Logica de Movimiento
-        float inputMovimiento = Input.GetAxis("Horizontal");
+        float inputMovimiento = joystick.Horizontal;
 
         if(inputMovimiento != 0f)
         {

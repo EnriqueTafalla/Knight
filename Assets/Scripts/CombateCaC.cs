@@ -29,7 +29,7 @@ public class CombateCaC : MonoBehaviour
             tiempoSiguenteAtaque = tiempoEntreAtaques;
         }
     }
-    private void Golpe()
+    public void Golpe()
     {
         animator.SetTrigger("Golpe");
 
