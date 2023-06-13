@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         puntosTotales += puntosASumar;
         Debug.Log(puntosTotales);
-        if(puntosTotales >= 150)
+        if(puntosTotales >= 300)
         {
             Time.timeScale = 0f;
             menuYouWin.SetActive(true);

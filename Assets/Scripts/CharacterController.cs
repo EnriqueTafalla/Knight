@@ -138,7 +138,7 @@ public class CharacterController : MonoBehaviour
     }
     void ProcesarSalto()
     {
-        if (joystick.Vertical > 0.3f && EstaEnSuelo())
+        if (joystick.Vertical > 0.7 && EstaEnSuelo())
         {
             rigidBody.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
         }
