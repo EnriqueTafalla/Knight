@@ -29,7 +29,7 @@ public class FallingPlataforma : MonoBehaviour
 
     IEnumerator fallDown()
     {
-        yield return new WaitForSeconds(0.50f);
+        yield return new WaitForSeconds(0.80f);
         rb.isKinematic = false;
     }
 }
