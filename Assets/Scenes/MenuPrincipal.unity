@@ -184,7 +184,7 @@ MonoBehaviour:
   m_text: PULSA PARA EMPEZAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf916abc7f32470479ec9580cede38a7, type: 2}
-  m_sharedMaterial: {fileID: -8310265095838491609, guid: cf916abc7f32470479ec9580cede38a7, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 1ef188db0f156a844a3b73114e68d4c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_text: KNIGHT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf916abc7f32470479ec9580cede38a7, type: 2}
-  m_sharedMaterial: {fileID: -8310265095838491609, guid: cf916abc7f32470479ec9580cede38a7, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 1ef188db0f156a844a3b73114e68d4c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
