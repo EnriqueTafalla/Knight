@@ -687,7 +687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -209, y: 120}
+  m_AnchoredPosition: {x: -91, y: 51}
   m_SizeDelta: {x: 755.0098, y: 426.7585}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1744739139
@@ -710,7 +710,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KNIGHT
+  m_text: 'KNIGHT
+
+    ADVENTURE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf916abc7f32470479ec9580cede38a7, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 1ef188db0f156a844a3b73114e68d4c2, type: 2}
@@ -773,7 +775,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -538.80493, w: 0}
+  m_margin: {x: -141.2778, y: 0, z: -538.80493, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
